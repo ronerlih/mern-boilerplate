@@ -12,11 +12,10 @@ module.exports = {
       if (error) {
         console.log(error);
       }
-      // // If that key exist in Redis store
+      // If that key exist in Redis store
       if (result) {
         console.log("serving from cache");
-        console.log(result);
-        return res.status(200).set("Content-Type", "text/html").send(result);
+        return res.send(result);
       } else {
 
         // Key does not exist in Redis store
@@ -29,10 +28,17 @@ module.exports = {
           console.log("\n\n\nssr from fs")
           let appComponent = ReactDOMServer.renderToString(<App ssr/>)
 
-          client.setex(`ssr:app`, 1000 * 60 * 60 * 24, data.replace(
-            '<div id="root"></div>',
-            `<div id="root">${appComponent}</div>`
-          ));
+          try {
+            client.setex(`ssr:app`, 1000 * 60 * 60 * 24, data.replace(
+              '<div id="root"></div>',
+              `<div id="root">${appComponent}</div>`
+            ));
+          }
+          catch(err){
+            console.log('\n\n\n\nredit write err');
+            console.log(err);
+          }
+          
           return res.set("Content-Type", "text/html").send(
             data.replace(
               '<div id="root"></div>',

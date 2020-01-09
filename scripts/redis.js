@@ -4,7 +4,7 @@ const REDIS_URL = process.env.REDIS_URL;
 const redisPassword = process.env.REDIS_PASS;
 const client = redis.createClient({
   host: REDIS_URL,
-  user: 'prodi' ,
+  user: 'h' ,
   port: 18869,
   no_ready_check: true,
   auth_pass: redisPassword

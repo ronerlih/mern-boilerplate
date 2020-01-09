@@ -31,7 +31,7 @@ module.exports = {
           client.setex(`ssr:app`, 1000 * 60 * 60 * 24, data.replace(
             '<div id="root"></div>',
             `<div id="root">${appComponent}</div>`
-          ).toString());
+          ));
           return res.set("Content-Type", "text/html").send(
             data.replace(
               '<div id="root"></div>',

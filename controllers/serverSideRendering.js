@@ -12,10 +12,11 @@ module.exports = {
       if (error) {
         console.log(error);
       }
-      // If that key exist in Redis store
+      // // If that key exist in Redis store
       if (result) {
         console.log("serving from cache");
-        return res.status(200).send(result);
+        console.log(result);
+        return res.status(200).set("Content-Type", "text/html").send(result);
       } else {
 
         // Key does not exist in Redis store

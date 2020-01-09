@@ -59,7 +59,7 @@ module.exports = {
     // check only on user - no db call
     return req.session.user 
       ? res.status(200).json(req.session.user)
-      : res.status(201).json('Not authorized! Please sign in.');
+      : req.session.destroy(), res.status(201).json('Not authorized! Please sign in.') ;
   },
   cpu: function (req, res, next){
     console.log("get cpou route");

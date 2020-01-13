@@ -17,7 +17,6 @@ module.exports = {
         console.log("serving from cache");
         return res.send(result);
       } else {
-
         // Key does not exist in Redis store
         // Fetch from DB (or axios call to external api )
         fs.readFile(path.resolve('./client/build/index.html'), 'utf8', (err, data) => {

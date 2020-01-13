@@ -32,6 +32,7 @@ https://devcenter.heroku.com/articles/scaling
 docker build -t boiler-docker .
 docker images
 docker run -p 49160:3001 -d boiler-docker
+docker swarm -p 3001:3001 -d boiler-docker
 docker ps
 curl -i localhost:49160
 //https://nodejs.org/de/docs/guides/nodejs-docker-webapp/

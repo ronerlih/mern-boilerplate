@@ -1,7 +1,6 @@
 
 
 # mern boilerplate
-[git repo](https://github.com/ronerlih/project-3-boiler-authentication)
 
 ###### mern stack: ` mongodb, expresjs, React.js, node.js `
 
@@ -136,4 +135,5 @@ https://devcenter.heroku.com/articles/scaling)
 - [cluster communication](https://medium.com/js-imaginea/clustering-inter-process-communication-ipc-in-node-js-748f981214e9)
 
 
+> [git repo](https://github.com/ronerlih/project-3-boiler-authentication)
 

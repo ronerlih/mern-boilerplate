@@ -12,9 +12,9 @@
 
 - install dependencies: ```npm i```
 
-- manually install bcrypt
+- manually install bcrypt (`npm i bcrypt`)
   - windows: (tricky, make sure to run in powershell in admin mode)
-  - mac: run with `sudo`
+  - mac/linux: run with `sudo`
 
 - run localy (dev enviorment): 
   - install mongoDB and run server locally.
@@ -71,6 +71,60 @@ REDIS_PASS=[your-redis-service-password]
     - `brew install wrk`
     - i.e. `wrk -t8 -c100 -d30s http://localhost:3001/` 
 
+###### project structure
+MERN-BOILERPLATE
+├── client `front end (react app)`
+│   ├── README. md
+│   ├── build `to be served in production or on server side rendering`
+│   │   ├── asset-manifest.json
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── manifest.json
+│   │   ├── precache-manifest.50ab651f5c82451e623a23f949bf95cb.js
+│   │   ├── service-worker.js
+│   │   └── static
+│   ├── package-lock.json
+│   ├── package.json `of react app`
+│   ├── public
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   └── manifest.json
+│   └── src
+│       ├── App.js `root level component`
+│       ├── components
+│       ├── index.js `root level page`
+│       ├── pages
+│       └── utils
+`----------- server -----------`
+├── index.js `entery point: transpile server from es6 + cluster it (runs server.js)` 
+├── controllers `routes function /handlers`
+│   ├── booksController.js
+│   ├── serverSideRendering.js
+│   ├── userController.js
+│   └── workerController.js
+├── models `db collections - mongoose`
+│   ├── book.js
+│   ├── index.js
+│   └── user.js
+├── notes.txt `development notepad`
+├── Dockerfile `docker config`
+├── package-lock.json
+├── package.json
+├── readme.md
+├── routes `routing`
+│   ├── api `api routes`
+│   │   ├── books.js
+│   │   ├── index.js
+│   │   ├── user.js
+│   │   └── worker.js
+│   └── index.js `split to ssr and api routes`
+├── scripts `modulerizing scripts to here`
+│   ├── cluster.js
+│   ├── errorHandler.js
+│   ├── redis.js
+│   ├── seedDB.js `see db collections`
+│   └── session.js
+└── server.js `express server`
 
 ###### additional resources
 - [Heroku scaling documentaion](

@@ -71,7 +71,7 @@ REDIS_PASS=[your-redis-service-password]
     - i.e. `wrk -t8 -c100 -d30s http://localhost:3001/` 
 
 ###### project structure
-MERN-BOILERPLATE
+```MERN-BOILERPLATE
 ├── client `front end (react app)`
 │   ├── README. md
 │   ├── build `to be served in production or on server side rendering`
@@ -123,7 +123,7 @@ MERN-BOILERPLATE
 │   ├── redis.js
 │   ├── seedDB.js `see db collections`
 │   └── session.js
-└── server.js `express server`
+└── server.js `express server` ```
 
 ###### additional resources
 - [Heroku scaling documentaion](

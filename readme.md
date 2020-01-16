@@ -71,8 +71,9 @@ REDIS_PASS=[your-redis-service-password]
     - i.e. `wrk -t8 -c100 -d30s http://localhost:3001/` 
 
 ###### project structure
-```MERN-BOILERPLATE
-├── client `front end (react app)`
+```
+MERN-BOILERPLATE
+├── client // front end (react app)
 │   ├── README. md
 │   ├── build `to be served in production or on server side rendering`
 │   │   ├── asset-manifest.json
@@ -83,47 +84,48 @@ REDIS_PASS=[your-redis-service-password]
 │   │   ├── service-worker.js
 │   │   └── static
 │   ├── package-lock.json
-│   ├── package.json `of react app`
+│   ├── package.json // of react app
 │   ├── public
 │   │   ├── favicon.ico
 │   │   ├── index.html
 │   │   └── manifest.json
 │   └── src
-│       ├── App.js `root level component`
+│       ├── App.js // root level component
 │       ├── components
 │       ├── index.js `root level page`
 │       ├── pages
 │       └── utils
-`----------- server -----------`
-├── index.js `entery point: transpile server from es6 + cluster it (runs server.js)` 
-├── controllers `routes function /handlers`
+  ----------- server -----------
+├── index.js // entery point + transpile server from es6 + cluster it (runs server.js)`
+├── controllers // routes function/handlers
 │   ├── booksController.js
 │   ├── serverSideRendering.js
 │   ├── userController.js
 │   └── workerController.js
-├── models `db collections - mongoose`
+├── models // db collections - mongoose
 │   ├── book.js
 │   ├── index.js
 │   └── user.js
-├── notes.txt `development notepad`
-├── Dockerfile `docker config`
+├── notes.txt // development notepad
+├── Dockerfile // docker config
 ├── package-lock.json
 ├── package.json
 ├── readme.md
-├── routes `routing`
-│   ├── api `api routes`
+├── routes // routing
+│   ├── api // api routes 
 │   │   ├── books.js
 │   │   ├── index.js
 │   │   ├── user.js
 │   │   └── worker.js
-│   └── index.js `split to ssr and api routes`
-├── scripts `modulerizing scripts to here`
+│   └── index.js // split to ssr and api routes
+├── scripts // modulerizing scripts to here
 │   ├── cluster.js
 │   ├── errorHandler.js
 │   ├── redis.js
-│   ├── seedDB.js `see db collections`
+│   ├── seedDB.js // seed db collections
 │   └── session.js
-└── server.js `express server` ```
+└── server.js //express server 
+```
 
 ###### additional resources
 - [Heroku scaling documentaion](

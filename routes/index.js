@@ -7,8 +7,8 @@ router.use("/api", apiRoutes);
 
 // If no API routes are hit, send the React app
 router.use("/", function(req, res) {
-  console.log("serving react");
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  console.log("serving html routes outside of the font end build");
+  
 });
 
 module.exports = router;

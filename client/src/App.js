@@ -9,8 +9,8 @@ import Nav from "./components/Nav";
 import Alert from "./components/Alert";
 import {/* getCookie, */ authenticateUser, getCpu } from "./utils/handleSessions";
 
-const PrivateRoute = ({ component: Component, state: state, ...rest }) => (
-  <Route {...rest} render={(props) => (
+const PrivateRoute = ({ component: Component, state }) => (
+  <Route render={ props => (
     state.authenticated === true
       ? <Component {...props} />
       : state.loading === true
@@ -26,7 +26,8 @@ class App extends React.Component {
     this.state = {
       authenticated: false,
       loading: false,
-      ssr: props.ssr ? true : false
+      ssr: props.ssr ? true : false,
+      showAlert: false
     }
   }
 
@@ -43,7 +44,10 @@ class App extends React.Component {
     })
 
   getCpu = () => getCpu()
-    .then(cpu => this.setState({ cpu: cpu }))
+    .then(
+      cpu => this.setState({ showAlert: true, cpu: cpu }, 
+      () => setTimeout(() => this.setState({ showAlert: false}), 2000 ))
+      )
     .catch(err => {
       if(process.env.NODE_ENV !== 'production')
       console.log(err)
@@ -83,8 +87,8 @@ class App extends React.Component {
             ? ""
             : ""
           }
-          <Alert cpu= {this.state.cpu ? this.state.cpu.data: ""} onclick={this.removeInfo}>
-              </Alert>
+          <Alert cpu={this.state.cpu ? this.state.cpu.data: ""} onclick={this.removeInfo}></Alert>
+           
         </div>
       </RouterComponent>
 

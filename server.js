@@ -1,9 +1,8 @@
 const express = require("express");
-const router = require("express").Router();
 const path = require("path");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
-const APIandAppRoutes = require("./routes");
+const router = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 const compression = require('compression')
@@ -32,20 +31,19 @@ if (process.argv.indexOf("no-ssr") < 0)
   router.use("^/$", serverRenderer)
 
 // Serve up static assets (usually on heroku)
-// if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production") {
   router.use(express.static(path.resolve(__dirname, 'client/build'), { maxAge: '30d' }));
-// }
+}
 
 // Add router (ssr and static)
-app.use(router);
 // Add API and view routes
-app.use(APIandAppRoutes);
+app.use(router);
 
 // error handling
 app.use((err, req, res, next) => errorHandler(err, req, res, next));
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/mern-auth",{   useCreateIndex: true,
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/mern",{   useCreateIndex: true,
 useUnifiedTopology: true, useNewUrlParser: true});
 
 // Start the API server

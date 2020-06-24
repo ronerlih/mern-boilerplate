@@ -36,8 +36,7 @@ module.exports = {
       db.User.authenticate(req.body.email, req.body.password, function (error, user) {
         if (error || !user) {
           var err = new Error('Wrong email or password.');
-          err.status = 401;
-          return next(err);
+          next(err);
         } else {
           console.log(`login: `, user._id);
           // req.session.userId = user._id;
@@ -54,13 +53,20 @@ module.exports = {
   },
 
   authenticate: function( req, res, next){
-    console.log("\n\n\n\nsession.user: ");
+    try{
+      console.log("\n\n\n\nsession.user: ");
     console.log(req.session.user);
     // check only on user - no db call
-    return req.session.user 
-      ? res.status(200).json(req.session.user)
-      : req.session.destroy(), res.status(201).json('Not authorized! Please sign in.') ;
-  },
+    if (req.session.user) 
+       {res.status(200).json(req.session.user)}
+    else 
+      {req.session.destroy(), res.status(201).json('Not authorized! Please sign in.') }
+    }
+  catch (e){
+    console.log('caught');
+    console.log('e:', e.message);
+    // next(e);
+  } },
   cpu: function (req, res, next){
     console.log("get cpou route");
     console.log(process.env.cpuCore);

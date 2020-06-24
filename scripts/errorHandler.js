@@ -1,10 +1,10 @@
-export default function (err, req, res, next) {
+export default function (error, req, res, next) {
   console.log("\n\n\n\n---\nerr handler called");
     if (res.headersSent) {
       console.log('error sent');
-      return next(err)
+      return next(error)
     }
-    console.log('error will send');
+    console.log('error will be sent');
     res.status(500)
-    res.send(`server error:<br>error msg: ${err}`)
+    res.send(error.toString())
   }

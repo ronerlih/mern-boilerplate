@@ -30,7 +30,7 @@
     "@babel/preset-env": "^7.10.3",
     "@babel/preset-react": "^7.10.1",
     "@babel/register": "^7.10.3",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bcrypt": "^3.0.8",
     "compression": "^1.7.4",
     "connect-redis": "^4.0.4",

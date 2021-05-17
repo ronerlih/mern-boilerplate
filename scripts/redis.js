@@ -1,12 +1,12 @@
 // connect to Redis
 import redis from 'redis';
-const REDIS_URL = process.env.REDIS_URL ;
-const redisPassword = process.env.REDIS_PASS;
+const REDIS_URL = process.env.HEROKU_REDIS_CYAN_URL ;
+const redisPassword = process.env.HEROKU_REDIS_CYAN_PASS;
 const client = (REDIS_URL && redisPassword) 
   ?   redis.createClient({
       host: REDIS_URL,
       user: 'h' ,
-      port: 18869,
+      port: REDIS_URL.split(":").slice(-1),
       no_ready_check: true,
       auth_pass: redisPassword
     })
